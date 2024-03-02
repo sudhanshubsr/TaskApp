@@ -7,18 +7,24 @@ import { useAppContext } from "@/utils/appcontext";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-import {useToast} from "@components/ui/use-toast";
+import { useToast } from "@components/ui/use-toast";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import {Card, CardContent, CardHeader } from "@components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@components/ui/card";
+import { FaGithub } from "react-icons/fa";
 
 export default function Home() {
   const [statussort, setStatussort] = useState("all");
   const [searchPhrase, setSearchPhrase] = useState("");
   const { data: session } = useSession();
-  const {toast} = useToast();
+  const { toast } = useToast();
   const queryClient = useQueryClient();
-
 
   const {
     title,
@@ -32,26 +38,23 @@ export default function Home() {
     date,
     setDate,
   } = useAppContext();
-  
 
-  async function handledeleteTask(id,ev){
+  async function handledeleteTask(id, ev) {
     ev.preventDefault();
-    try{
+    try {
       const res = await axios.delete(`/api/todo/?id=${id}`);
-      if(res){
+      if (res) {
         toast({
           title: "Task Deleted",
           message: "Task has been successfully deleted",
           varaint: "success",
-        })
+        });
         queryClient.invalidateQueries("tasks");
       }
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
     }
   }
-
 
   const handleAddTask = async () => {
     try {
@@ -92,7 +95,6 @@ export default function Home() {
     }
   }
 
-
   const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery({
     queryKey: ["tasks"],
     queryFn: async ({ pageParam = 0 }) => {
@@ -116,11 +118,9 @@ export default function Home() {
     },
   });
 
-
-
   const filteredTasks = data?.pages[0]?.taskDoc?.filter((task) => {
     if (statussort === "all") {
-      return true; 
+      return true;
     } else {
       return task.status === statussort;
     }
@@ -129,12 +129,23 @@ export default function Home() {
   if (!session) {
     return (
       <div className="w-full h-[100%] flex items-center justify-center">
-        <Card>
-          <CardHeader>
-            <h1 className="text-2xl font-bold">Please Sign In</h1>
+        <Card className="mx-auto w-full max-w-sm">
+          <CardTitle className="text-center mt-4">
+            Please Login to Continue
+          </CardTitle>
+          <CardHeader className="text-center">
+            <div className="space-y-2">
+              <FaGithub className="mx-auto h-8 w-8" />
+              <div>
+                <CardTitle>Sign in with GitHub</CardTitle>
+                <CardDescription>
+                  Sign in using your GitHub account
+                </CardDescription>
+              </div>
+            </div>
           </CardHeader>
-          <CardContent>
-            <p className="text-lg">You need to sign in to view this page</p>
+          <CardContent className="space-y-4">
+            <Button className="w-full">Sign in</Button>
           </CardContent>
         </Card>
       </div>
@@ -164,23 +175,21 @@ export default function Home() {
               {filteredTasks?.map((task) => (
                 <TaskComponent
                   key={task.id}
-                  handleDeleteTask={(ev)=>handledeleteTask(task.id,ev)}
+                  handleDeleteTask={(ev) => handledeleteTask(task.id, ev)}
                   task={task}
                 />
               ))}
             </div>
           )}
 
-          {hasNextPage &&
-            data?.pages.length >
-              1 &&(
-                <button
-                  onClick={() => fetchNextPage()}
-                  disabled={!hasNextPage || isFetching}
-                  className="w-full h-10 bg-blue-500 text-white rounded-md mt-10">
-                  {isFetching ? "Loading..." : "Load more"}
-                </button>
-              )}
+          {hasNextPage && data?.pages.length > 1 && (
+            <button
+              onClick={() => fetchNextPage()}
+              disabled={!hasNextPage || isFetching}
+              className="w-full h-10 bg-blue-500 text-white rounded-md mt-10">
+              {isFetching ? "Loading..." : "Load more"}
+            </button>
+          )}
         </div>
       </div>
     </>
