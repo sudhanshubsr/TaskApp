@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <h1 align="center">Task App</h1>
+    <h3>Mantis Eye Assignment</h3>
+</div>
+
+
+<div align="center">
+  <a href="https://taskappbsr.vercel.app/">TaskApp.com</a>
+</div>
+
+<div align="center">
+    <img src="./public/main.png">
+</div>
+
+<br/>
+<br/>
+
+# Task App - Mantis Eye Assignment
+
+Task App is a simple task management application built with Next.js, Tailwind CSS, and MongoDB. It allows users to create, update, and delete tasks, as well as mark them as complete. The app also features user authentication and real-time updates.
+
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) – Frontend framework
+- JavaScript – Programming language
+- [Tailwind CSS](https://tailwindcss.com/) – Styling
+- [Prisma](https://prisma.io) - ORM (Object-Relational Mapping)
+- [Vercel](https://vercel.com/) – Hosting platform
+- [NextAuth.js](https://next-auth.js.org/) – Authentication
+- [MongoDB](https://www.mongodb.com/) – Database
+- [GitHub](https://github.com) – Version control
+- [HTML](https://html.com) – Markup language
+
+
+
+
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```shell
+git clone https://github.com/sudhanshubsr/TaskApp
+cd TaskApp
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install npm dependencies
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```shell
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 3. Copy the environment variables to `.env`
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Configure the variables in `.env`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable                 | Value                                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------------------|
+| NEXTAUTH_SECRET          | "example_nextauth_secret"                                                                   |
+| NEXTAUTH_URL             | "http://localhost:3000"                                                                     |
+| GITHUB_CLIENT_ID         | "example_github_client_id"                                                                  |
+| GITHUB_CLIENT_SECRET     | "example_github_client_secret"                                                              |
+| MONGODB_DATABASE_URL     | "mongodb+srv://username:password@cluster0.mongodb.net/database?retryWrites=true&w=majority" |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Initialize the database
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```shell
+npx prisma generate
+```
+
+### 6. Run the dev server
+
+```shell
+npm run dev
+```
+
+### 7. Open the app in your browser
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+
+
+## The app is now running locally!
+
+You can now login with your GitHub account and start using the app. You can create, update, and delete tasks, as well as mark them as complete. The app also features real-time updates, so you can see changes made by other users in real time.
+
