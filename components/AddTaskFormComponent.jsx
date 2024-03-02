@@ -14,6 +14,7 @@ import { TbClipboardPlus } from "react-icons/tb";
 import { useAppContext } from "@/utils/appcontext";
 import DatePicker from "./DatePickerComponent";
 import SelectStatus from "./SelectStatusComponent";
+import {Textarea} from "@/components/ui/textarea";
 
  
 export default function AddTaskDialog({handleAddTaskButton}) {
@@ -54,7 +55,7 @@ export default function AddTaskDialog({handleAddTaskButton}) {
             <Label htmlFor="description" className="text-right">
               Description
             </Label>
-            <Input id="description" value={description} className="col-span-3" onChange={(ev)=> setDescription(ev.target.value)} />
+            <Textarea id="description" value={description} className="col-span-3" onChange={(ev)=> setDescription(ev.target.value)} />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="status" className="text-right">

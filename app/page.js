@@ -5,7 +5,7 @@ import SearchandSortComponent from "@/components/SearchandSortComponent";
 import TaskComponent from "@/components/TaskComponent";
 import { useAppContext } from "@/utils/appcontext";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import { useToast } from "@components/ui/use-toast";
 import axios from "axios";
@@ -22,7 +22,7 @@ import { FaGithub } from "react-icons/fa";
 export default function Home() {
   const [statussort, setStatussort] = useState("all");
   const [searchPhrase, setSearchPhrase] = useState("");
-  const { data: session } = useSession();
+  const { data: session} = useSession();
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -126,6 +126,9 @@ export default function Home() {
     }
   });
 
+  const handleSignIn = async() => {
+    await signIn("github");
+  };
   if (!session) {
     return (
       <div className="w-full h-[100%] flex items-center justify-center">
@@ -145,7 +148,7 @@ export default function Home() {
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Button className="w-full">Sign in</Button>
+            <Button className="w-full" onClick={handleSignIn}>Sign in</Button>
           </CardContent>
         </Card>
       </div>

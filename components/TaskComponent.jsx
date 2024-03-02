@@ -14,9 +14,9 @@ const TaskComponent = ({ handleDeleteTask, task}) => {
 <div className="border border-gray-200 mt-2 dark:border-black rounded-lg bg-white shadow-md overflow-hidden w-full">
   <div className="p-2">
     <div className="flex items-start justify-between">
-      <div className="space-y-1">
+      <div className="space-y-1 w-[26em]">
         <h3 className="text-lg font-semibold leading-none">{task.title}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{task.description}</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 ">{task.description}</p>
       </div>
       <div className="flex-col">
         <Badge variant="info">

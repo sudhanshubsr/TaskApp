@@ -17,6 +17,8 @@ import SelectStatus from "./SelectStatusComponent";
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 import {useToast} from "@components/ui/use-toast";
+import { Textarea } from "@/components/ui/textarea"
+
 
  
 export default function EditDialog({task}) {
@@ -86,7 +88,7 @@ export default function EditDialog({task}) {
             <Label htmlFor="description" className="text-right">
               Description
             </Label>
-            <Input id="description" value={newdescription} className="col-span-3" onChange={(ev)=> setnewDescription(ev.target.value)} />
+            <Textarea  value={newdescription} className="col-span-3" onChange={(ev)=> setnewDescription(ev.target.value)} />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="status" className="text-right">

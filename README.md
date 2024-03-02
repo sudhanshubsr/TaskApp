@@ -33,6 +33,13 @@ Task App is a simple task management application built with Next.js, Tailwind CS
 - [HTML](https://html.com) – Markup language
 
 
+## Features
+
+- **User Authentication:** Secure user authentication with GitHub OAuth.
+- **Infinite Scroll:** Load more tasks as you scroll down the page.
+- **Create, Update, and Delete Tasks:** Manage tasks with CRUD operations.
+- **Status Update:** Mark tasks as Todo or Done or In Progress.
+
 
 
 

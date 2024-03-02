@@ -33,7 +33,7 @@ const NavbarComponent = () => {
           </PopoverTrigger>
           <PopoverContent width="23px">
             {session ? (
-              <Button variant="outline" className='bg-black' onClick={() => signOut()}>Sign Out</Button>
+              <Button variant="outline" className='bg-black text-white' onClick={() => signOut()}>Sign Out</Button>
             ) : (
               <Button variant="outline" className='bg-black text-white' onClick={() => signIn("github")}>Sign In</Button>
             )}
