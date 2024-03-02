@@ -3,7 +3,7 @@ import prisma from '../prisma/index'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 
 
-export const authOptions = {
+export  const authOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
         GithubProvider({

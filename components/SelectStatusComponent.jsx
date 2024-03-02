@@ -20,9 +20,9 @@ export default function SelectStatus({status, setStatus}) {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Status</SelectLabel>
-          <SelectItem value="apple">Todo</SelectItem>
-          <SelectItem value="banana">In Progress</SelectItem>
-          <SelectItem value="blueberry">Done</SelectItem>
+          <SelectItem value="Todo">Todo</SelectItem>
+          <SelectItem value="In Progress">In Progress</SelectItem>
+          <SelectItem value="Done">Done</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

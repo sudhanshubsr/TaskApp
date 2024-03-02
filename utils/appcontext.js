@@ -9,6 +9,12 @@ export const ContextProvider = ({ children }) => {
   const [status, setStatus] = useState("");
   const [assignedUser, setAssignedUser] = useState("");
   const [date, setDate] = useState("");
+  const [newTitle, setnewTitle] = useState(title);
+  const [newdescription, setnewDescription] = useState(description);
+  const [newstatus, setnewStatus] = useState(status);
+  const [newassignedUser, setnewAssignedUser] = useState(assignedUser);
+  const [newdate, setnewDate] = useState(date);
+
 
 
   return (
@@ -24,6 +30,16 @@ export const ContextProvider = ({ children }) => {
         setAssignedUser,
         date,
         setDate,
+        newTitle,
+        setnewTitle,
+        newdescription,
+        setnewDescription,
+        newstatus,
+        setnewStatus,
+        newassignedUser,
+        setnewAssignedUser,
+        newdate,
+        setnewDate,
 
       }}>
       {children}

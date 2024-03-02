@@ -9,15 +9,15 @@ datasource db {
 
 
 
-model Todo {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  content   String?
-  status    String    @default("TODO")
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  userId    String    @db.ObjectId
-  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Task {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String
+  assignedUser  String
+  status        String    @default("TODO")
+  date          DateTime  @default(now())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 
 model User {
@@ -28,7 +28,6 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  todos         Todo[]
 }
 
 model Session {
