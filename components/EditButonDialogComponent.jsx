@@ -112,7 +112,7 @@ export default function EditDialog({task}) {
         </div>
         <DialogFooter>
             <DialogTrigger asChild>  
-              <Button variant="outline" onClick={(ev)=>handleEditTask(ev)}>Edit</Button>
+              <Button variant="outline" onClick={(ev)=>handleEditTask(ev)}>Update</Button>
             </DialogTrigger>
         </DialogFooter>
       </DialogContent>
